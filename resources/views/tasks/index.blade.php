@@ -1,18 +1,17 @@
 <x-app-layout>
     <div class="max-w-5xl mx-auto py-6">
 
-        <div class="flex justify-between mb-4">
+        <div class="flex justify-between mb-4 px-6">
             <h2 class="text-2xl font-bold">My Tasks</h2>
-            <a href="{{ route('tasks.create') }}" 
-               class="bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 no-underline inline-block font-semibold">
+            {{-- <a href="{{ route('tasks.create') }}"
+                class="bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 no-underline inline-block font-semibold">
                 + New Task
-            </a>
+            </a> --}}
         </div>
 
         <!-- Filter -->
-        <form method="GET" class="mb-4 flex gap-2">
-            <input type="text" name="search" placeholder="Search..."
-                   class="border p-2 rounded">
+        <form method="GET" class="mb-4 flex gap-2 px-5">
+            <input type="text" name="search" placeholder="Search..." class="border p-2 rounded">
 
             <select name="status" class="border p-2 rounded">
                 <option value="">All</option>
@@ -20,13 +19,14 @@
                 <option value="completed">Completed</option>
             </select>
 
-            <button class="bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
+            <button
+                class="bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
                 Filter
             </button>
         </form>
 
         <!-- Success Message -->
-        @if(session('success'))
+        @if (session('success'))
             <div class="bg-green-200 p-3 mb-4 rounded">
                 {{ session('success') }}
             </div>
@@ -47,30 +47,36 @@
                     <tr>
                         <td class="p-2 border">{{ $task->title }}</td>
                         <td class="p-2 border">{{ $task->status }}</td>
-                        <td class="p-2 border">{{ $task->due_date ? $task->due_date->format('M d, Y') : 'No date' }}</td>
+                        <td class="p-2 border">{{ $task->due_date ? $task->due_date->format('M d, Y') : 'No date' }}
+                        </td>
                         <td class="p-2 border flex gap-2">
-                            @if(!$task->assigned_by)
+                            @if (!$task->assigned_by)
                                 <a href="{{ route('tasks.edit', $task) }}"
-                                   class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 no-underline font-semibold">
+                                    class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 no-underline font-semibold">
                                     Edit
                                 </a>
 
-                                <button onclick="openDeleteModal({{ $task->id }}, '{{ route('tasks.destroy', $task) }}')"
-                                        class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
+                                <button
+                                    onclick="openDeleteModal({{ $task->id }}, '{{ route('tasks.destroy', $task) }}')"
+                                    class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
                                     Delete
                                 </button>
                             @else
-                                <form method="POST" action="{{ route('tasks.update-status', $task) }}" class="flex gap-2 items-center">
+                                <form method="POST" action="{{ route('tasks.update-status', $task) }}"
+                                    class="flex gap-2 items-center">
                                     @csrf
                                     @method('PATCH')
                                     <select name="status" class="border p-1 rounded">
-                                        <option value="pending" {{ $task->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="completed" {{ $task->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                                        <option value="pending" {{ $task->status == 'pending' ? 'selected' : '' }}>
+                                            Pending</option>
+                                        <option value="completed" {{ $task->status == 'completed' ? 'selected' : '' }}>
+                                            Completed</option>
                                     </select>
                                     <input type="text" name="status_note" placeholder="Add note (optional)"
-                                           value="{{ old('status_note', $task->status_note ?? '') }}"
-                                           class="border p-1 rounded w-48" />
-                                    <button type="submit" class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
+                                        value="{{ old('status_note', $task->status_note ?? '') }}"
+                                        class="border p-1 rounded w-48" />
+                                    <button type="submit"
+                                        class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
                                         Update
                                     </button>
                                 </form>
@@ -100,10 +106,12 @@
             <h3 class="text-lg font-bold mb-4">Confirm Delete</h3>
             <p class="text-gray-700 mb-6">Are you sure you want to delete this task?</p>
             <div class="flex gap-3 justify-end">
-                <button onclick="closeDeleteModal()" class="bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
+                <button onclick="closeDeleteModal()"
+                    class="bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
                     Cancel
                 </button>
-                <button onclick="confirmDelete()" class="bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
+                <button onclick="confirmDelete()"
+                    class="bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
                     Delete
                 </button>
             </div>
@@ -112,17 +120,17 @@
 
     <script>
         let deleteUrl = '';
-        
+
         function openDeleteModal(taskId, url) {
             deleteUrl = url;
             document.getElementById('deleteModal').classList.remove('hidden');
         }
-        
+
         function closeDeleteModal() {
             document.getElementById('deleteModal').classList.add('hidden');
             deleteUrl = '';
         }
-        
+
         function confirmDelete() {
             if (deleteUrl) {
                 const form = document.createElement('form');
@@ -136,7 +144,7 @@
                 form.submit();
             }
         }
-        
+
         // Close modal when clicking outside
         document.getElementById('deleteModal')?.addEventListener('click', function(e) {
             if (e.target === this) {

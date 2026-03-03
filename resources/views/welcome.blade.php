@@ -490,7 +490,7 @@
 
             @guest
                 <div class="hero-actions">
-                    <a href="{{ route('register') }}" class="btn-primary">Begin for free</a>
+                    <a href="{{ route('register') }}" class="btn-primary">Sign up Now</a>
                     <a href="{{ route('login') }}" class="btn-secondary">Sign in</a>
                 </div>
             @endguest
@@ -542,7 +542,7 @@
         <div class="cta-banner">
             <h2 class="cta-title">Ready to take control<br>of your day?</h2>
             <p class="cta-subtitle">Join thousands already working smarter.</p>
-            <a href="{{ route('register') }}" class="btn-primary">Create your free account</a>
+            <a href="{{ route('register') }}" class="btn-primary">Sign up Now</a>
         </div>
     @endguest
 

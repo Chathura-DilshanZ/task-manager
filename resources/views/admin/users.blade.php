@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    @if(session('success'))
+                    @if (session('success'))
                         <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
                             {{ session('success') }}
                         </div>
@@ -18,16 +18,20 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Name
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Email
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Role
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Action
                                 </th>
                             </tr>
@@ -42,19 +46,22 @@
                                         {{ $user->email }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
                                             {{ ucfirst($user->role) }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a href="{{ route('admin.assign-task-form', $user) }}" class="text-indigo-600 hover:text-indigo-900">
+                                        <a href="{{ route('admin.assign-task-form', $user) }}"
+                                            class="text-indigo-600 hover:text-indigo-900">
                                             Assign Task
                                         </a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                    <td colspan="4"
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                         No users found.
                                     </td>
                                 </tr>
@@ -65,8 +72,9 @@
             </div>
 
             <div class="mt-6">
-                <a href="{{ route('admin.tasks') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-blue-700">
-                    View All Assigned Tasks
+                <a href="{{ route('admin.tasks') }}"
+                    class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md font-semibold text-sm text-gray-700 bg-white hover:bg-gray-100 transition duration-200 shadow-sm">
+                    View All Assigned Tasks →
                 </a>
             </div>
         </div>

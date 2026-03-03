@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 
@@ -17,6 +18,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('tasks', TaskController::class);
+});
+
+// Admin routes
+Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/users/{user}/assign-task', [AdminController::class, 'assignTaskForm'])->name('admin.assign-task-form');
+    Route::post('/users/{user}/assign-task', [AdminController::class, 'assignTask'])->name('admin.assign-task');
+    Route::get('/tasks', [AdminController::class, 'tasks'])->name('admin.tasks');
 });
 
 require __DIR__ . '/auth.php';

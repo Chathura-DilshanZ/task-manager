@@ -12,5 +12,16 @@ class Task extends Model
         'status',
         'due_date',
         'user_id',
+        'assigned_by',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function assignedBy()
+    {
+        return $this->belongsTo(User::class, 'assigned_by');
+    }
 }

@@ -27,15 +27,7 @@
                     </div>
 
                     <!-- User Tasks Card -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 text-gray-900">
-                            <h3 class="text-lg font-semibold mb-4">{{ __('My Tasks') }}</h3>
-                            <a href="{{ route('tasks.index') }}" 
-                               class="block w-full text-center bg-gray-200 text-gray-900 px-4 py-2 rounded font-semibold border border-gray-900 hover:bg-gray-300 transition">
-                                {{ __('Go to Tasks') }}
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
             @else
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

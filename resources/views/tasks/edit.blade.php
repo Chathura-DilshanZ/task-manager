@@ -38,7 +38,7 @@
             <div class="mb-3">
                 <label>Due Date</label>
                 <input type="date" name="due_date"
-                       value="{{ $task->due_date }}"
+                       value="{{ $task->due_date ? $task->due_date->format('Y-m-d') : '' }}"
                        class="w-full border p-2 rounded">
             </div>
 

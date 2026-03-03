@@ -47,7 +47,7 @@
                     <tr>
                         <td class="p-2 border">{{ $task->title }}</td>
                         <td class="p-2 border">{{ $task->status }}</td>
-                        <td class="p-2 border">{{ $task->due_date }}</td>
+                        <td class="p-2 border">{{ $task->due_date ? $task->due_date->format('M d, Y') : 'No date' }}</td>
                         <td class="p-2 border flex gap-2">
 
                             <a href="{{ route('tasks.edit', $task) }}"

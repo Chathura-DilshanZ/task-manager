@@ -12,7 +12,7 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Task::where('user_id', $request->user()->id());
+        $query = Task::where('user_id', $request->user()->id);
 
         if ($request->status) {
             $query->where('status', $request->status);
@@ -32,7 +32,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.create');
     }
 
     /**
@@ -65,9 +65,13 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, Task $task)
     {
-        //
+        if ($task->user_id !== $request->user()->id) {
+            abort(403);
+        }
+
+        return view('tasks.edit', compact('task'));
     }
 
     /**

@@ -51,11 +51,13 @@
                 Cancel
             </a>
 
-            <button type="button" 
-                    onclick="openDeleteModal('{{ route('tasks.destroy', $task) }}')"
-                    class="ml-2 bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
-                Delete
-            </button>
+            @if(!$task->assigned_by || auth()->user()->isAdmin())
+                <button type="button" 
+                        onclick="openDeleteModal('{{ route('tasks.destroy', $task) }}')"
+                        class="ml-2 bg-gray-200 text-gray-900 px-4 py-2 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
+                    Delete
+                </button>
+            @endif
 
         </form>
 

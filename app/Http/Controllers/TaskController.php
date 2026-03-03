@@ -71,6 +71,11 @@ class TaskController extends Controller
             abort(403);
         }
 
+        // If the task was assigned by an admin, disallow full edit from the assignee.
+        if ($task->assigned_by && !$request->user()->isAdmin()) {
+            abort(403);
+        }
+
         return view('tasks.edit', compact('task'));
     }
 
@@ -80,6 +85,11 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         if ($task->user_id !== $request->user()->id) {
+            abort(403);
+        }
+
+        // Prevent assignees from changing full task fields if task was assigned by admin
+        if ($task->assigned_by && !$request->user()->isAdmin()) {
             abort(403);
         }
 
@@ -101,7 +111,34 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        // Prevent assignees from deleting tasks that were created/assigned by admins
+        if ($task->assigned_by && !request()->user()->isAdmin()) {
+            abort(403);
+        }
+
         $task->delete();
         return redirect()->route('tasks.index');
+    }
+
+    /**
+     * Allow assignee to update only status and an optional short note.
+     */
+    public function updateStatus(Request $request, Task $task)
+    {
+        if ($task->user_id !== $request->user()->id) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'status' => 'required|in:pending,completed',
+            'status_note' => 'nullable|string|max:255',
+        ]);
+
+        $task->status = $validated['status'];
+        $task->status_note = $validated['status_note'] ?? null;
+        $task->save();
+
+        return redirect()->route('tasks.index')
+            ->with('success', 'Status updated successfully.');
     }
 }

@@ -49,16 +49,32 @@
                         <td class="p-2 border">{{ $task->status }}</td>
                         <td class="p-2 border">{{ $task->due_date ? $task->due_date->format('M d, Y') : 'No date' }}</td>
                         <td class="p-2 border flex gap-2">
+                            @if(!$task->assigned_by)
+                                <a href="{{ route('tasks.edit', $task) }}"
+                                   class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 no-underline font-semibold">
+                                    Edit
+                                </a>
 
-                            <a href="{{ route('tasks.edit', $task) }}"
-                               class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 no-underline font-semibold">
-                                Edit
-                            </a>
-
-                            <button onclick="openDeleteModal({{ $task->id }}, '{{ route('tasks.destroy', $task) }}')"
-                                    class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
-                                Delete
-                            </button>
+                                <button onclick="openDeleteModal({{ $task->id }}, '{{ route('tasks.destroy', $task) }}')"
+                                        class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
+                                    Delete
+                                </button>
+                            @else
+                                <form method="POST" action="{{ route('tasks.update-status', $task) }}" class="flex gap-2 items-center">
+                                    @csrf
+                                    @method('PATCH')
+                                    <select name="status" class="border p-1 rounded">
+                                        <option value="pending" {{ $task->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="completed" {{ $task->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                                    </select>
+                                    <input type="text" name="status_note" placeholder="Add note (optional)"
+                                           value="{{ old('status_note', $task->status_note ?? '') }}"
+                                           class="border p-1 rounded w-48" />
+                                    <button type="submit" class="bg-gray-200 text-gray-900 px-3 py-1 rounded border border-gray-900 hover:bg-gray-300 font-semibold">
+                                        Update
+                                    </button>
+                                </form>
+                            @endif
 
                         </td>
                     </tr>

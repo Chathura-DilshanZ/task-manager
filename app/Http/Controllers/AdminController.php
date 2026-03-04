@@ -73,4 +73,52 @@ class AdminController extends Controller
         $tasks = Task::with('user', 'assignedBy')->get();
         return view('admin.tasks', compact('tasks'));
     }
+
+    /**
+     * Show edit form for task
+     */
+    public function editTask(Request $request, Task $task)
+    {
+        if (!Auth::check() || !$request->user()->isAdmin()) {
+            abort(403, 'Unauthorized');
+        }
+
+        $users = User::where('role', 'user')->get();
+        return view('admin.edit-task', compact('task', 'users'));
+    }
+
+    /**
+     * Update task
+     */
+    public function updateTask(Request $request, Task $task)
+    {
+        if (!Auth::check() || !$request->user()->isAdmin()) {
+            abort(403, 'Unauthorized');
+        }
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'due_date' => 'nullable|date',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $task->update($validated);
+
+        return redirect()->route('admin.tasks')->with('success', 'Task updated successfully!');
+    }
+
+    /**
+     * Delete task
+     */
+    public function deleteTask(Request $request, Task $task)
+    {
+        if (!Auth::check() || !$request->user()->isAdmin()) {
+            abort(403, 'Unauthorized');
+        }
+
+        $task->delete();
+
+        return redirect()->route('admin.tasks')->with('success', 'Task deleted successfully!');
+    }
 }

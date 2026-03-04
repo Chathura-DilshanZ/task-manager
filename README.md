@@ -273,24 +273,24 @@ DELETE /admin/tasks/{id} - Delete task
 
 ### As User
 
-**1. View My Tasks**
+1. View My Tasks
 
-1. Login as user
-2. Go to `/dashboard` → "My Tasks"
-3. See all assigned tasks with descriptions
+    1. Login as user
+    2. Go to `/dashboard` → "My Tasks"
+    3. See all assigned tasks with descriptions
 
-**2. Update Task Status**
+2. Update Task Status
 
-1. In task list, select status: Pending/Completed
-2. Add optional note
-3. Click "Update"
-4. Status changes immediately
+    1. In task list, select status: Pending/Completed
+    2. Add optional note
+    3. Click "Update"
+    4. Status changes immediately
 
-**3. Search/Filter**
+3. Search/Filter
 
-1. Use search box to find task by name
-2. Filter by status (All/Pending/Completed)
-3. Click "Filter"
+    1. Use search box to find task by name
+    2. Filter by status (All/Pending/Completed)
+    3. Click "Filter"
 
 ## Project Structure
 
@@ -336,46 +336,52 @@ task-manager/
 
 ````
 
-## Testing Workflow
+# Testing Workflow
 
-### Manual Testing Steps
+# Manual Testing Steps
 
-1. **Admin Access**
+1. Admin Access
     - Login with admin credentials
     - Verify access to `/admin/users` and `/admin/tasks`
-2. **Task Creation**
+2. Task Creation
     - Assign task to user
     - Verify task appears in user's list
-3. **Task Editing**
+3. Task Editing
     - Click Edit on any task
     - Modify title/description
     - Save and verify changes
-4. **Task Deletion**
+4. Task Deletion
     - Click Delete button
     - Verify confirmation modal appears
     - Confirm deletion and check success message
-5. **User Task Management**
+5. User Task Management
     - Login as user
     - View assigned tasks with descriptions
     - Update status with notes
     - Verify changes saved
 
-6. **Filtering & Search**
+6. Filtering & Search
     - Test search by title
     - Filter by status
     - Verify pagination works
 
-## Key Assumptions
+# Key Assumptions
 
-1. **MySQL Database** - Version 8.0+; adjust connection if using different host
-2. **Email Verification** - Uses local file driver by default; configure MAIL\_\* for real SMTP
-3. **Role System** - Only 'admin' and 'user'; admins can manage all tasks
-4. **Soft Deletes** - Tasks retain audit history; modify `AdminSeeder.php` to change defaults
-5. **Session Timeout** - 120 minutes; adjust `SESSION_LIFETIME` in .env
-6. **Timezone** - UTC by default; set `APP_TIMEZONE` in .env
-7. **Admin User** - Created via seeder with hardcoded credentials (see AdminSeeder.php)
+1. MySQL Database - Version 8.0+; adjust connection if using different host
 
-## Common Commands
+2. Email Verification - Uses local file driver by default; configure MAIL\_\* for real SMTP
+
+3. Role System - Only 'admin' and 'user'; admins can manage all tasks
+
+4. Soft Deletes - Tasks retain audit history; modify `AdminSeeder.php` to change defaults
+
+5. Session Timeout - 120 minutes; adjust `SESSION_LIFETIME` in .env
+
+6. Timezone - UTC by default; set `APP_TIMEZONE` in .env
+
+7. Admin User - Created via seeder with hardcoded credentials (see AdminSeeder.php)
+
+# Common Commands
 
 ```bash
 # Database
@@ -418,15 +424,15 @@ php artisan serve --port=8001    # Custom port
 - [Blade Templates](https://laravel.com/docs/blade)
 - [Eloquent ORM](https://laravel.com/docs/eloquent)
 
-## License
+# License
 
 MIT License - Open source project
 
 ---
 
-**Created:** March 4, 2026  
-**Version:** 1.0.0  
-**Status:** Assessment Submission
+Created: March 4, 2026  
+Version: 1.0.0  
+Status: Assessment Submission
 
 ## Assumptions
 

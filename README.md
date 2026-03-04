@@ -219,13 +219,8 @@ Password: milan@123
 Role: User
 ```
 
----
 
-# ⚙️ Quick Start for Evaluators
-
-### For Evaluators/Reviewers
-
-**Important:** The database is NOT included in git. Follow these steps to set up:
+#Steps to set up:
 
 ```bash
 # 1. Clone the repository

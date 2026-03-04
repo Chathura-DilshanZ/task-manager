@@ -200,11 +200,20 @@ Email: admin@taskmanager.com
 Password: admin@123
 Role: Admin
 
-### Demo User Account
+### Demo User Accounts
 
 Email: geeth@gmail.com
 Password: geeth@123
 Role: User
+
+Email: chamodi@gmail.com
+Password: chamodi@123
+Role: User
+
+Email: milan@gmail.com
+Password: milan@123
+Role: User
+
 
 ## Routes & Endpoints
 

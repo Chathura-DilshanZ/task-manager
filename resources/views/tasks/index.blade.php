@@ -37,6 +37,7 @@
             <thead class="bg-gray-200">
                 <tr>
                     <th class="p-2 border">Title</th>
+                    <th class="p-2 border">Description</th>
                     <th class="p-2 border">Status</th>
                     <th class="p-2 border">Due Date</th>
                     <th class="p-2 border">Actions</th>
@@ -46,6 +47,11 @@
                 @forelse($tasks as $task)
                     <tr>
                         <td class="p-2 border">{{ $task->title }}</td>
+                        <td class="p-2 border text-sm text-gray-600 max-w-xs">
+                            <div class="truncate" title="{{ $task->description ?? 'No description' }}">
+                                {{ Str::limit($task->description ?? 'No description', 50) }}
+                            </div>
+                        </td>
                         <td class="p-2 border">{{ $task->status }}</td>
                         <td class="p-2 border">{{ $task->due_date ? $task->due_date->format('M d, Y') : 'No date' }}
                         </td>
@@ -86,7 +92,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="text-center p-4">
+                        <td colspan="5" class="text-center p-4">
                             No tasks found.
                         </td>
                     </tr>

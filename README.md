@@ -342,17 +342,21 @@ task-manager/
 1. Admin Access
     - Login with admin credentials
     - Verify access to `/admin/users` and `/admin/tasks`
+
 2. Task Creation
     - Assign task to user
     - Verify task appears in user's list
+
 3. Task Editing
     - Click Edit on any task
     - Modify title/description
     - Save and verify changes
+
 4. Task Deletion
     - Click Delete button
     - Verify confirmation modal appears
     - Confirm deletion and check success message
+
 5. User Task Management
     - Login as user
     - View assigned tasks with descriptions

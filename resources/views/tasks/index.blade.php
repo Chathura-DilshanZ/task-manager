@@ -27,7 +27,7 @@
 
         <!-- Success Message -->
         @if (session('success'))
-            <div class="bg-green-200 p-3 mb-4 rounded">
+            <div class="bg-green-200 p-3 mb-4 rounded px-5">
                 {{ session('success') }}
             </div>
         @endif

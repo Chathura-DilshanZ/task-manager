@@ -52,16 +52,16 @@ This project demonstrates a full-stack web application with:
 
 ## Tech Stack
 
-| Layer               | Technology                          |
-| ------------------- | ----------------------------------- |
-| **Framework**       | Laravel 11                          |
-| **Database**        | MySQL 8.0+                          |
-| **Frontend**        | Blade Templates, Tailwind CSS, Vite |
-| **Authentication**  | Laravel built-in Auth               |
-| **ORM**             | Eloquent                            |
-| **Package Manager** | Composer, NPM                       |
+| Layer           | Technology                          |
+| --------------- | ----------------------------------- |
+| Framework       | Laravel 11                          |
+| Database        | MySQL 8.0+                          |
+| Frontend        | Blade Templates, Tailwind CSS, Vite |
+| Authentication  | Laravel built-in Auth               |
+| ORM             | Eloquent                            |
+| Package Manager | Composer, NPM                       |
 
-## Requirements
+# Requirements
 
 - PHP 8.2 or higher
 - MySQL 8.0 or higher
@@ -69,15 +69,15 @@ This project demonstrates a full-stack web application with:
 - Composer 2.0+
 - npm or yarn
 
-## Installation & Setup
+# Installation & Setup
 
-### 1. Clone Repository
+# 1. Clone Repository
 
 ````bash
 git clone <repository-url>
 cd task-manager
 
-### 2. Install Dependencies
+# 2. Install Dependencies
 
 ```bash
 
@@ -101,7 +101,7 @@ cp .env.example .env
 
 php artisan key:generate
 
-### 4. Database Setup
+# 4. Database Setup
 
 ```bash
 
@@ -116,7 +116,7 @@ mysql -u root -p
 
 php artisan migrate --seed
 
-### 5. Build Frontend Assets
+# 5. Build Frontend Assets
 
 ```bash
 
@@ -128,14 +128,14 @@ npm run dev
 
 npm run build
 
-### 6. Start Development Server
+# 6. Start Development Server
 
 ```bash
 php artisan serve
 
 Access the application at: http://localhost:8000
 
-## Environment Variables
+# Environment Variables
 
 See `.env.example` for complete template. Key variables:
 
@@ -165,9 +165,9 @@ MAIL_PORT=1025
 SESSION_DRIVER=database
 SESSION_LIFETIME=120
 
-## Database Schema
+# Database Schema
 
-### Users Table
+# Users Table
 
 - id (PK)
 - name
@@ -177,7 +177,7 @@ SESSION_LIFETIME=120
 - email_verified_at
 - created_at, updated_at
 
-### Tasks Table
+# Tasks Table
 
 - id (PK)
 - title
@@ -190,17 +190,17 @@ SESSION_LIFETIME=120
 - created_at, updated_at
 - deleted_at (soft delete)
 
-## Default Credentials
+# Default Credentials
 
 After running `php artisan migrate --seed`:
 
-### Admin Account
+# Admin Account
 
 Email: admin@taskmanager.com
 Password: admin@123
 Role: Admin
 
-### Demo User Accounts
+# Demo User Accounts
 
 Email: geeth@gmail.com
 Password: geeth@123
@@ -215,9 +215,9 @@ Password: milan@123
 Role: User
 
 
-## Routes & Endpoints
+# Routes & Endpoints
 
-### Authentication (Public)
+# Authentication (Public)
 
 GET /login - Login page
 POST /login - Submit login
@@ -225,7 +225,7 @@ GET /register - Registration page
 POST /register - Submit registration
 POST /logout - Logout
 
-### User Routes (Authenticated)
+# User Routes (Authenticated)
 
 GET /dashboard - User dashboard
 GET /tasks - My tasks
@@ -234,7 +234,7 @@ GET /profile - Profile page
 PATCH /profile - Update profile
 DELETE /profile - Delete account
 
-### Admin Routes (Admin Only)
+# Admin Routes (Admin Only)
 
 GET /admin/users - All users list
 GET /admin/tasks - All tasks
@@ -244,11 +244,11 @@ GET /admin/tasks/{id}/edit - Edit form
 PATCH /admin/tasks/{id} - Update task
 DELETE /admin/tasks/{id} - Delete task
 
-## Usage Examples
+# Usage Examples
 
-### As Admin
+# As Admin
 
-**1. Assign Task to User**
+1. Assign Task to User
 
 1. Navigate to `/admin/users`
 2. Find user and click "Assign Task"
@@ -256,14 +256,14 @@ DELETE /admin/tasks/{id} - Delete task
 4. Click "Save"
 5. View all tasks at `/admin/tasks`
 
-**2. Edit Task**
+2. Edit Task
 
 1. Go to `/admin/tasks`
 2. Click "Edit" button
 3. Modify: Title, Description, Assigned User, Due Date
 4. Click "Save Changes"
 
-**3. Delete Task**
+3. Delete Task
 
 1. Go to `/admin/tasks`
 2. Click "Delete" button
@@ -271,7 +271,7 @@ DELETE /admin/tasks/{id} - Delete task
 4. Confirm or cancel
 5. Success notification shows
 
-### As User
+# As User
 
 1. View My Tasks
 
@@ -292,9 +292,8 @@ DELETE /admin/tasks/{id} - Delete task
     2. Filter by status (All/Pending/Completed)
     3. Click "Filter"
 
-## Project Structure
+# Project Structure
 
-````
 
 task-manager/
 ├── app/
@@ -334,7 +333,7 @@ task-manager/
 ├── composer.json
 └── package.json
 
-````
+
 
 # Testing Workflow
 

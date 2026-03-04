@@ -192,22 +192,74 @@ SESSION_LIFETIME=120
 
 # Default Credentials
 
-After running `php artisan migrate --seed`:
+After running `php artisan migrate --seed`, use these credentials to test:
 
-# Admin Account
-
+### Admin Account
+```
 Email: admin@taskmanager.com
 Password: admin@123
-Role: Admin
+Role: Admin (full access to task management)
+```
 
-# Demo User Accounts
-
+### Demo User Accounts
+```
+User 1:
 Email: geeth@gmail.com
 Password: geeth@123
 Role: User
 
+User 2:
 Email: chamodi@gmail.com
 Password: chamodi@123
+Role: User
+
+User 3:
+Email: milan@gmail.com
+Password: milan@123
+Role: User
+```
+
+---
+
+# ⚙️ Quick Start for Evaluators
+
+### For Evaluators/Reviewers
+
+**Important:** The database is NOT included in git. Follow these steps to set up:
+
+```bash
+# 1. Clone the repository
+git clone <repository-url>
+cd task-manager
+
+# 2. Install dependencies
+composer install
+npm install
+
+# 3. Create environment file
+cp .env.example .env
+
+# 4. Generate application key
+php artisan key:generate
+
+# 5. Create database (MySQL must be running)
+mysql -u root -p
+> CREATE DATABASE task_manager_db;
+> EXIT;
+
+# 6. Run migrations and seed with demo data
+php artisan migrate --seed
+
+# 7. Build frontend assets
+npm run build
+
+# 8. Start the application
+php artisan serve
+```
+
+**Access the app at:** `http://localhost:8000`
+
+**Login with the credentials above to test all features.**
 Role: User
 
 Email: milan@gmail.com

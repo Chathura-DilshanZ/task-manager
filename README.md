@@ -73,13 +73,13 @@ This project demonstrates a full-stack web application with:
 
 ### 1. Clone Repository
 
----bash
+````bash
 git clone <repository-url>
 cd task-manager
 
 ### 2. Install Dependencies
 
----bash
+```bash
 
 # Install PHP dependencies
 
@@ -91,7 +91,7 @@ npm install
 
 ### 3. Environment Configuration
 
----bash
+```bash
 
 # Copy environment file
 
@@ -103,7 +103,7 @@ php artisan key:generate
 
 ### 4. Database Setup
 
----bash
+```bash
 
 # Create MySQL database
 
@@ -118,7 +118,7 @@ php artisan migrate --seed
 
 ### 5. Build Frontend Assets
 
----bash
+```bash
 
 # Development with hot reload
 
@@ -130,7 +130,7 @@ npm run build
 
 ### 6. Start Development Server
 
-----bash
+```bash
 php artisan serve
 
 Access the application at: http://localhost:8000
@@ -250,14 +250,14 @@ DELETE /admin/tasks/{id} - Delete task
 **2. Edit Task**
 
 1. Go to `/admin/tasks`
-2. Click "✎ Edit" button
+2. Click "Edit" button
 3. Modify: Title, Description, Assigned User, Due Date
 4. Click "Save Changes"
 
 **3. Delete Task**
 
 1. Go to `/admin/tasks`
-2. Click "🗑 Delete" button
+2. Click "Delete" button
 3. Professional confirmation modal appears
 4. Confirm or cancel
 5. Success notification shows
@@ -285,45 +285,47 @@ DELETE /admin/tasks/{id} - Delete task
 
 ## Project Structure
 
-```
+````
+
 task-manager/
 ├── app/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   │   ├── AdminController.php
-│   │   │   ├── TaskController.php
-│   │   │   └── ProfileController.php
-│   │   └── Middleware/
-│   ├── Models/
-│   │   ├── Task.php
-│   │   └── User.php
-│   └── Policies/
-│       └── AdminPolicy.php
+│ ├── Http/
+│ │ ├── Controllers/
+│ │ │ ├── AdminController.php
+│ │ │ ├── TaskController.php
+│ │ │ └── ProfileController.php
+│ │ └── Middleware/
+│ ├── Models/
+│ │ ├── Task.php
+│ │ └── User.php
+│ └── Policies/
+│ └── AdminPolicy.php
 ├── resources/
-│   ├── views/
-│   │   ├── admin/
-│   │   │   ├── tasks.blade.php (with delete modal)
-│   │   │   ├── edit-task.blade.php
-│   │   │   └── users.blade.php
-│   │   ├── tasks/
-│   │   │   └── index.blade.php (user view)
-│   │   └── layouts/
-│   ├── css/app.css
-│   └── js/app.js
+│ ├── views/
+│ │ ├── admin/
+│ │ │ ├── tasks.blade.php (with delete modal)
+│ │ │ ├── edit-task.blade.php
+│ │ │ └── users.blade.php
+│ │ ├── tasks/
+│ │ │ └── index.blade.php (user view)
+│ │ └── layouts/
+│ ├── css/app.css
+│ └── js/app.js
 ├── database/
-│   ├── migrations/
-│   └── seeders/
-│       ├── AdminSeeder.php
-│       └── DatabaseSeeder.php
+│ ├── migrations/
+│ └── seeders/
+│ ├── AdminSeeder.php
+│ └── DatabaseSeeder.php
 ├── routes/
-│   ├── web.php
-│   ├── auth.php
-│   └── console.php
+│ ├── web.php
+│ ├── auth.php
+│ └── console.php
 ├── .env.example
 ├── README.md
 ├── composer.json
 └── package.json
-```
+
+````
 
 ## Testing Workflow
 
@@ -386,9 +388,9 @@ php artisan view:clear
 # Server
 php artisan serve                # Start dev server
 php artisan serve --port=8001    # Custom port
-```
+````
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 | Issue                       | Solution                                               |
 | --------------------------- | ------------------------------------------------------ |
